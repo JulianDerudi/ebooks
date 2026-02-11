@@ -1,10 +1,22 @@
-
+import { useContext } from "react"
+import { EbookContext } from "../../Context/EbookContext"
+import Ebook from "../Ebook/Ebook"
 
 
 export default function EbookList() {
+    const { ebooks, loadingEbooks } = useContext(EbookContext)
+
+    if (loadingEbooks || !ebooks) return <p>Loading ebooks...</p>
+
+    if (ebooks.length === 0) return <p>No ebooks found.</p>
+
     return (
         <div>
-            <h1>Ebook List</h1>
+            {
+                ebooks.map(ebook => (
+                    <Ebook key={ebook.id} ebook={ebook} />
+                ))
+            }
         </div>
     )
 }
