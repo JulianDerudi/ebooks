@@ -11,6 +11,7 @@ export default function Ebook({ ebook }) {
             <div>
                 <h3>{ebook.title}</h3>
                 <p>{ebook.author}</p>
+                <hr />
             </div>
         </Link>
     )

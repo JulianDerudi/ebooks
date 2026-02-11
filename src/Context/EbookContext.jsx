@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import { Outlet } from "react-router";
 import { getEbooks } from "../services/ebookService";
 
 
 export const EbookContext = createContext()
 
-export default function EbookContextProvider() {
+export default function EbookContextProvider({ children }) {
     const [ebooks, setEbooks] = useState([])
     const [loadingEbooks, setLoadingEbooks] = useState(false)
 
@@ -57,7 +56,7 @@ export default function EbookContextProvider() {
 
     return (
         <EbookContext.Provider value={providerValue}>
-            <Outlet />
+            {children}
         </EbookContext.Provider>
     )
 }
