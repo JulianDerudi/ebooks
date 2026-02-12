@@ -1,7 +1,7 @@
 import SearchEbookForm from "../../Components/SearchEbookForm/SearchEbookForm";
 import EbookList from "../../Components/EbookList/EbookList";
 import { Link } from "react-router";
-import { Button } from "../../components/shared/FormComponents";
+import { Button } from "../../Components/shared/FormComponents";
 
 export default function HomeScreen() {
   return (
