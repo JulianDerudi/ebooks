@@ -4,7 +4,7 @@ const ebooks_data = [
         title: "The Great Gatsby",
         author: "F. Scott Fitzgerald",
         description: "A novel about the American dream and the decadence of the Jazz Age.",
-        cover_image: "https://example.com/great-gatsby.jpg",
+        cover_image: null,
         chapters: [
             {
                 id: 1,
@@ -18,7 +18,7 @@ const ebooks_data = [
         title: "To Kill a Mockingbird",
         author: "Harper Lee",
         description: "A novel about racial injustice in the Deep South.",
-        cover_image: "https://example.com/to-kill-a-mockingbird.jpg",
+        cover_image: null,
         chapters: [
             {
                 id: 1,
@@ -32,7 +32,7 @@ const ebooks_data = [
         title: "1984",
         author: "George Orwell",
         description: "A dystopian social science fiction novel about totalitarian control.",
-        cover_image: "https://example.com/1984.jpg",
+        cover_image: null,
         chapters: [
             {
                 id: 1,
@@ -53,7 +53,7 @@ const ebooks_data = [
         description: `
             Cada capitulo de este libro te sumerge en las típicas preguntas existenciales que tiene el promedio de las personas que están en una etapa temprana de la adultez. Guiadas por animales antropomórficos, que a raíz de una situación, terminan profundizando en temas que te hacen reflexionar. Humor Sádico, Bizarro, Reflexivo, Fantasioso, son algunos de los conceptos que destacan este libro, además de tener un toque de jerga argentina.
             `,
-        cover_image: `./UN-DRAGÓN-UN-RATÓN-Y-UNA-ASTILLA.png`,
+        cover_image: null,
         chapters: [
             {
                 id: 1,
