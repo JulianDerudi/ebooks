@@ -14,7 +14,7 @@ export default function NewEbookForm() {
     const author = e.target[1].value;
     const description = e.target[2].value;
     const cover_image = e.target[3].value ; 
-    const content = e.target[4].value;
+    const chapterContent = e.target[4].value;
     
     // crear un nuevo ebook con los datos del formulario
     const newEbook = {
@@ -23,7 +23,13 @@ export default function NewEbookForm() {
       author,
       description,
       cover_image,
-      content
+      chapters: [
+        {
+          id: 1,
+          title: "Chapter 1",
+          content: chapterContent
+        }
+      ]
     };
     
     // agregar el nuevo ebook a la lista de ebooks en memoria
@@ -48,7 +54,7 @@ export default function NewEbookForm() {
         <input type="text" placeholder="Author" required />
         <textarea placeholder="Description" required></textarea>
         <input type="text" placeholder="Cover Image URL"  />
-        <textarea placeholder="Content" required></textarea>
+        <textarea placeholder="Chapter 1 Content" required></textarea>
         <button type="submit">Add Ebook</button>
       </form>
     </div>

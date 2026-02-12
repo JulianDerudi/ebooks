@@ -53,6 +53,27 @@ export default function EbookContextProvider() {
         return deleted
     }
 
+    function updateUserEbook(id, updatedEbook) {
+        // Solo permite actualizar ebooks del usuario
+        if (id <= 1000) return false
+        
+        const updatedEbooks = ebooks.map(ebook => 
+            ebook.id === id ? updatedEbook : ebook
+        )
+        setEbooks(updatedEbooks)
+        
+        // Guardar en localStorage también
+        const storedEbooks = localStorage.getItem("ebooks")
+        if (storedEbooks) {
+            const parsedStored = JSON.parse(storedEbooks)
+            const updated = parsedStored.map(ebook => 
+                ebook.id === id ? updatedEbook : ebook
+            )
+            localStorage.setItem("ebooks", JSON.stringify(updated))
+        }
+        return true
+    }
+
     useEffect(() => {
         loadEbooks()
     }, [])
@@ -66,7 +87,8 @@ export default function EbookContextProvider() {
         searchEbooksByTitle,
         updateEbookById,
         loadEbooks,
-        deleteEbook
+        deleteEbook,
+        updateUserEbook
     }
 
     return (
