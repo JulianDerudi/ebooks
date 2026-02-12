@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link } from "react-router";
 import { getEbookById } from "../../services/ebookService";
-import { Button } from "../../components/shared/FormComponents";
+import { Button } from "../../Components/shared/FormComponents";
 
 export default function ChapterReaderScreen() {
   const { id, chapterId } = useParams();

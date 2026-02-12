@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import NewEbookForm from "../../Components/NewEbookForm/NewEbookForm";
-import { Button } from "../../components/shared/FormComponents";
+import { Button } from "../../Components/shared/FormComponents";
 
 export default function AddEbookScreen() {
     return (

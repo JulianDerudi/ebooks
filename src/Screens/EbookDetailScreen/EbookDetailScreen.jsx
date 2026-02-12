@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from "react-router";
 import { getEbookById } from "../../services/ebookService";
 import { isUserAddedEbook } from "../../services/ebookService";
 import { EbookContext } from "../../Context/EbookContext";
-import { Button, FormInput, FormTextarea } from "../../components/shared/FormComponents";
+import { Button, FormInput, FormTextarea } from "../../Components/shared/FormComponents";
 
 export default function EbookDetailScreen() {
     const { id } = useParams();
