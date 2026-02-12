@@ -1,5 +1,6 @@
 import { createContext } from "react";
-import { useParams } from "react-router";
+import { Outlet, useParams } from "react-router";
+import { getEbookById } from "../services/ebookService";
 
 
 
@@ -9,9 +10,9 @@ export const EbookDetailContext = createContext(
     }
 )
 
-export default function EbookDetailContextProvider({ children }) {
-    const { ebook_id } = useParams()
-    const ebook_selected = getEbookById(ebook_id)
+export default function EbookDetailContextProvider() {
+    const { id } = useParams()
+    const ebook_selected = getEbookById(id)
 
     const providerValue = {
         ebook_selected: ebook_selected
@@ -19,7 +20,7 @@ export default function EbookDetailContextProvider({ children }) {
 
     return (
         <EbookDetailContext.Provider value={providerValue}>
-            {children}
+            <Outlet />
         </EbookDetailContext.Provider>
     )
 }

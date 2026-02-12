@@ -5,7 +5,7 @@ function getEbooks() {
 }
 
 function getEbookById(id) {
-    return ebooks_data.find(ebook => ebook.id === id)
+    return ebooks_data.find(ebook => ebook.id === parseInt(id))
 }
 
 export { getEbooks, getEbookById }

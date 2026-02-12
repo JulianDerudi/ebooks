@@ -3,13 +3,13 @@ import { getEbookById } from "../../services/ebookService";
 
 
 export default function EbookDetailScreen() {
-    const ebook_id = useParams().ebook_id
-    const ebook = getEbookById(ebook_id);
+    const { id } = useParams()
+    const ebook = getEbookById(id);
 
     return (
         <div>
             <h1>Ebook Detail Screen</h1>
-            <p>Showing details for ebook with id: {ebook_id}</p>
+            <p>Showing details for ebook with id: {id}</p>
             { //mostrar informacion del ebook con id ebook_id obtenida con getEbookById(ebook_id)
                 ebook
                 ?

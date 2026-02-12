@@ -5,8 +5,6 @@ import EbookContextProvider from './Context/EbookContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <EbookContextProvider>
-      <App />
-    </EbookContextProvider>
+    <App />
   </BrowserRouter>
 )
