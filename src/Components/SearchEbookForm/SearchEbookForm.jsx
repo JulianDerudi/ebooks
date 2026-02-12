@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { getEbooks } from "../../services/ebookService";
-import { Button } from "../../components/shared/FormComponents";
+import { Button } from "../../Components/shared/FormComponents";
 
 export default function SearchEbookForm() {
   const [searchValue, setSearchValue] = useState("");
