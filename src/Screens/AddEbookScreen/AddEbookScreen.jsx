@@ -1,14 +1,16 @@
-// pantalla para agregar un nuevo ebook a la lista de ebooks disponibles
-// el formulario debe tener los siguientes campos: title, author, description, cover_image
-// al enviar el formulario, se debe agregar el nuevo ebook a la lista de ebooks
-// y redirigir al usuario a la pantalla de inicio
-
+import { Link } from "react-router";
 import NewEbookForm from "../../Components/NewEbookForm/NewEbookForm";
+import { Button } from "../../components/shared/FormComponents";
 
 export default function AddEbookScreen() {
     return (
-        <div>
+        <div className="chapters-container">
+            <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button>← Back</Button>
+                </Link>
+            </div>
             <NewEbookForm />
         </div>
-    )
+    );
 }

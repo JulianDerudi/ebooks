@@ -1,22 +1,28 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { EbookContext } from "../../Context/EbookContext";
+import { Button, FormInput, FormTextarea } from "../shared/FormComponents";
 
 export default function NewEbookForm() {
   const navigate = useNavigate();
   const { ebooks, setEbooks } = useContext(EbookContext);
+  const [formValues, setFormValues] = useState({
+    title: "",
+    author: "",
+    description: "",
+    cover_image: "",
+    chapterContent: ""
+  });
+
+  const handleChange = (field) => (e) => {
+    setFormValues(prev => ({ ...prev, [field]: e.target.value }));
+  };
 
   const sendNewEbookData = (e) => {
     e.preventDefault();
     
-    // obtener los datos del formulario
-    const title = e.target[0].value;
-    const author = e.target[1].value;
-    const description = e.target[2].value;
-    const cover_image = e.target[3].value ; 
-    const chapterContent = e.target[4].value;
+    const { title, author, description, cover_image, chapterContent } = formValues;
     
-    // crear un nuevo ebook con los datos del formulario
     const newEbook = {
       id: Date.now(),
       title,
@@ -32,30 +38,69 @@ export default function NewEbookForm() {
       ]
     };
     
-    // agregar el nuevo ebook a la lista de ebooks en memoria
     const updatedEbooks = [...ebooks, newEbook];
     setEbooks(updatedEbooks);
-    
-    // guardar en localStorage
     localStorage.setItem("ebooks", JSON.stringify(updatedEbooks));
     
-    // limpiar el formulario
-    e.target.reset();
-    
-    // redirigir al usuario a la pantalla de inicio
     navigate("/");
   };
 
   return (
     <div>
-      <h2>Add a New Ebook</h2>
-      <form onSubmit={sendNewEbookData}>
-        <input type="text" placeholder="Title" required />
-        <input type="text" placeholder="Author" required />
-        <textarea placeholder="Description" required></textarea>
-        <input type="text" placeholder="Cover Image URL"  />
-        <textarea placeholder="Chapter 1 Content" required></textarea>
-        <button type="submit">Add Ebook</button>
+      <h2 style={{ marginBottom: 'var(--spacing-xl)', fontSize: 'var(--font-size-2xl)' }}>
+        Publish a New Ebook
+      </h2>
+      <form onSubmit={sendNewEbookData} style={{ maxWidth: '600px' }}>
+        <FormInput 
+          label="Title"
+          placeholder="Enter ebook title"
+          value={formValues.title}
+          onChange={handleChange("title")}
+          required
+        />
+        <FormInput 
+          label="Author"
+          placeholder="Enter author name"
+          value={formValues.author}
+          onChange={handleChange("author")}
+          required
+        />
+        <FormTextarea 
+          label="Description"
+          placeholder="Enter ebook description"
+          value={formValues.description}
+          onChange={handleChange("description")}
+          required
+          rows={4}
+        />
+        <FormInput 
+          label="Cover Image URL"
+          type="text"
+          placeholder="https://example.com/cover.jpg"
+          value={formValues.cover_image}
+          onChange={handleChange("cover_image")}
+        />
+        <FormTextarea 
+          label="First Chapter Content"
+          placeholder="Enter the content of your first chapter"
+          value={formValues.chapterContent}
+          onChange={handleChange("chapterContent")}
+          required
+          rows={10}
+        />
+        <div style={{ display: 'flex', gap: 'var(--spacing-md)', marginTop: 'var(--spacing-xl)' }}>
+          <Button type="submit" style={{ flex: 1 }}>
+            Publish Ebook
+          </Button>
+          <Button 
+            type="button"
+            variant="secondary"
+            onClick={() => navigate("/")}
+            style={{ flex: 1 }}
+          >
+            Cancel
+          </Button>
+        </div>
       </form>
     </div>
   );

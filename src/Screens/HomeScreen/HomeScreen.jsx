@@ -1,22 +1,28 @@
 import SearchEbookForm from "../../Components/SearchEbookForm/SearchEbookForm";
 import EbookList from "../../Components/EbookList/EbookList";
 import { Link } from "react-router";
+import { Button } from "../../components/shared/FormComponents";
 
 export default function HomeScreen() {
   return (
-    <div>
+    <div className="home-container">
         <header> 
-            <h1>Welcome to the ebooks page</h1>
+            <h1>Welcome to Ebooks</h1>
             <SearchEbookForm />
         </header>
-        <h2>Find your favorite ebooks</h2>
-        {
-          //mostrar lista de ebooks con el componente EbookList
+        
+        <div style={{ marginBottom: 'var(--spacing-2xl)' }}>
+          <h2 style={{ fontSize: 'var(--font-size-2xl)', marginBottom: 'var(--spacing-lg)' }}>
+            Discover Your Favorite Ebooks
+          </h2>
           <EbookList />
-        }
-        {
-          <Link to="/add-ebook">Add a new ebook</Link> 
-        }
+        </div>
+
+        <div style={{ marginTop: 'var(--spacing-2xl)', textAlign: 'center' }}>
+          <Link to="/add-ebook" style={{ textDecoration: 'none' }}>
+            <Button>+ Add New Ebook</Button>
+          </Link>
+        </div>
     </div>
   )
 }

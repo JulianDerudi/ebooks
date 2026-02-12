@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { isUserAddedEbook } from "../../services/ebookService";
 import { EbookContext } from "../../Context/EbookContext";
-
+import { Button } from "../shared/FormComponents";
 
 
 export default function Ebook({ ebook }) {
@@ -17,22 +17,28 @@ export default function Ebook({ ebook }) {
     };
 
     return (
-        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px"}}>
-            <Link to={`/ebook/${ebook.id}`} style={{flex: 1, textDecoration: "none", color: "inherit"}}>
-                <div>
-                    <h3>{ebook.title}</h3>
-                    <p>{ebook.author}</p>
-                    <hr />
+        <Link to={`/ebook/${ebook.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            <div className="chapter-item" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ flex: 1 }}>
+                    <h3 style={{ marginBottom: 'var(--spacing-sm)' }}>{ebook.title}</h3>
+                    <p style={{ color: 'var(--text-light)', fontSize: 'var(--font-size-sm)' }}>
+                        {ebook.author}
+                    </p>
+                    <p style={{ color: 'var(--text-light)', fontSize: 'var(--font-size-sm)', marginTop: 'var(--spacing-sm)' }}>
+                        {ebook.chapters?.length || 0} chapters
+                    </p>
                 </div>
-            </Link>
-            {isUserBook && (
-                <button 
-                    onClick={handleDelete}
-                    style={{padding: "5px 10px", backgroundColor: "#ff4444", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", marginLeft: "10px", whiteSpace: "nowrap"}}
-                >
-                    Delete
-                </button>
-            )}
-        </div>
-    )
+                {isUserBook && (
+                    <Button 
+                        onClick={handleDelete}
+                        size="small"
+                        variant="danger"
+                        style={{ marginLeft: 'var(--spacing-md)', whiteSpace: 'nowrap' }}
+                    >
+                        Delete
+                    </Button>
+                )}
+            </div>
+        </Link>
+    );
 }

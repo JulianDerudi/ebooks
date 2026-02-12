@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { getEbooks } from "../../services/ebookService";
+import { Button } from "../../components/shared/FormComponents";
 
 export default function SearchEbookForm() {
   const [searchValue, setSearchValue] = useState("");
@@ -10,40 +11,38 @@ export default function SearchEbookForm() {
     e.preventDefault();
     
     const ebooks = getEbooks();
-    
-    // Buscar por ID (si es un número)
     const ebookById = ebooks.find(ebook => ebook.id === parseInt(searchValue));
+    
     if (ebookById) {
       navigate(`/ebook/${ebookById.id}`);
       setSearchValue("");
       return;
     }
     
-    // Buscar por nombre (case-insensitive)
     const ebookByName = ebooks.find(ebook => 
       ebook.title.toLowerCase().includes(searchValue.toLowerCase())
     );
+    
     if (ebookByName) {
       navigate(`/ebook/${ebookByName.id}`);
       setSearchValue("");
       return;
     }
     
-    // Si no encuentra nada
     alert("Ebook not found");
     setSearchValue("");
   };
 
   return (
-    <div>
+    <div className="search-form">
         <form onSubmit={handleSearch}>
             <input 
               type="text" 
-              placeholder="Search for an ebook" 
+              placeholder="Search by title or ID..." 
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <Button type="submit">Search</Button>
         </form>
     </div>
   )
