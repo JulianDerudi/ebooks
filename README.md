@@ -1,16 +1,140 @@
-# React + Vite
+# 📚 E-Books React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con **React.js** como parte del curso de Full Stack (unidad de React).  
+La aplicación permite explorar una colección de libros digitales, realizar búsquedas dinámicas y navegar hacia el detalle de cada libro.
 
-Currently, two official plugins are available:
+🔗 **Demo en producción:**  
+https://ebooks-blue-seven.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📦 **Repositorio:**  
+https://github.com/JulianDerudi/ebooks
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎯 Objetivo del Proyecto
 
-## Expanding the ESLint configuration
+El objetivo principal fue aplicar los conceptos fundamentales de **React moderno**, enfocándome en:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Arquitectura basada en componentes
+- Manejo de estado local y global
+- Uso de Hooks
+- Lógica de búsqueda dinámica
+- Navegación entre vistas
+- Despliegue en producción con Vercel
+
+Este proyecto forma parte de mi formación como desarrollador Full Stack.
+
+---
+
+## 🚀 Funcionalidades
+
+- 📚 Listado dinámico de eBooks
+- 🔎 Búsqueda por **nombre o ID**
+- ✨ Coincidencias parciales (si se escribe parte del nombre redirige al libro correspondiente)
+- 📄 Vista de detalle por libro
+- 🌐 Navegación entre rutas
+- 🧠 Manejo de estado global con **Context API**
+- 🚀 Deploy en Vercel
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **React.js**
+- **React Context API**
+- **React Hooks (useState, useEffect, useContext)**
+- **Vite**
+- **JavaScript (ES6+)**
+- **CSS**
+- **Git & GitHub**
+- **Vercel (deploy en producción)**
+
+---
+
+## 🧱 Arquitectura del Proyecto
+
+El proyecto está organizado siguiendo buenas prácticas de React:
+
+ebooks/
+├── public/
+├── src/
+│ ├── components/
+│ ├── context/
+│ ├── pages/
+│ ├── data/
+│ │ └── ebooksData.js
+│ ├── App.jsx
+│ └── main.jsx
+├── package.json
+├── vite.config.js
+└── README.md
+
+
+### 📌 Principales conceptos implementados:
+
+- Separación por componentes reutilizables
+- Context para evitar prop drilling
+- Renderizado condicional
+- Navegación mediante rutas
+- Lógica de filtrado y búsqueda
+- Organización escalable del proyecto
+
+---
+
+## 💻 Instalación y Ejecución Local
+
+1. Clonar el repositorio:
+
+
+git clone https://github.com/JulianDerudi/ebooks.git
+
+2. Ingresar al directorio del proyecto:
+cd ebooks
+
+3. Instalar dependencias:
+npm install
+
+4. Ejecutar el servidor de desarrollo:
+npm run dev
+
+5. Abrir en el navegador:
+http://localhost:5173
+
+## 📚 Aprendizajes Clave
+
+Este proyecto demuestra:
+
+Comprensión de React moderno
+
+Manejo de estado global con Context API
+
+Organización profesional de un proyecto frontend
+
+Despliegue real en producción
+
+Implementación de lógica dinámica en el cliente
+
+Navegación entre vistas
+
+## 🔮 Posibles Mejoras Futuras
+
+Integración con API real de libros
+
+Persistencia en LocalStorage
+
+Sistema de favoritos
+
+Filtros avanzados y paginación
+
+Autenticación de usuarios
+
+Mejoras de UI/UX
+
+## 👤 Autor
+
+Julián Derudi
+📌 Portafolio: https://julianderudi.github.io/Portafolio/
+
+🔗 LinkedIn: https://www.linkedin.com/in/julian-derudi-730ba8343/
+
+Proyecto realizado con fines educativos como parte de mi formación en desarrollo Full Stack.
