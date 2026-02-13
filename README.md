@@ -55,20 +55,20 @@ Este proyecto forma parte de mi formación como desarrollador Full Stack.
 
 El proyecto está organizado siguiendo buenas prácticas de React:
 
-ebooks/
-├── public/
-├── src/
-│ ├── Components/
-│ ├── Context/
-│ ├── data/
-│ │ └── ebooksData.js
-| ├── Screens/
-| ├── styles/
-│ ├── App.jsx
-│ └── main.jsx
-├── package.json
-├── vite.config.js
-└── README.md
+    ebooks/
+    ├── public/
+    ├── src/
+    │ ├── Components/
+    │ ├── Context/
+    │ ├── data/
+    │ │ └── ebooksData.js
+    | ├── Screens/
+    | ├── styles/
+    │ ├── App.jsx
+    │ └── main.jsx
+    ├── package.json
+    ├── vite.config.js
+    └── README.md
 
 
 ### 📌 Principales conceptos implementados:
@@ -137,5 +137,7 @@ Julián Derudi
 📌 Portafolio: https://julianderudi.github.io/Portafolio/
 
 🔗 LinkedIn: https://www.linkedin.com/in/julian-derudi-730ba8343/
+
+---
 
 Proyecto realizado con fines educativos como parte de mi formación en desarrollo Full Stack.
