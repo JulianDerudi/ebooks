@@ -117,17 +117,17 @@ Este proyecto demuestra:
 
 ## 🔮 Posibles Mejoras Futuras
 
-Integración con API real de libros
+* Integración con API real de libros
 
-Persistencia en LocalStorage
+* Persistencia en LocalStorage
 
-Sistema de favoritos
+* Sistema de favoritos
 
-Filtros avanzados y paginación
+* Filtros avanzados y paginación
 
-Autenticación de usuarios
+* Autenticación de usuarios
 
-Mejoras de UI/UX
+* Mejoras de UI/UX
 
 ## 👤 Autor
 
