@@ -108,17 +108,12 @@ El proyecto está organizado siguiendo buenas prácticas de React:
 
 Este proyecto demuestra:
 
-Comprensión de React moderno
-
-Manejo de estado global con Context API
-
-Organización profesional de un proyecto frontend
-
-Despliegue real en producción
-
-Implementación de lógica dinámica en el cliente
-
-Navegación entre vistas
+- Comprensión de React moderno
+- Manejo de estado global con Context API
+- Organización profesional de un proyecto frontend
+- Despliegue real en producción
+- Implementación de lógica dinámica en el cliente
+- Navegación entre vistas
 
 ## 🔮 Posibles Mejoras Futuras
 
