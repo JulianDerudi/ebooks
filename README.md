@@ -85,19 +85,24 @@ El proyecto está organizado siguiendo buenas prácticas de React:
 ## 💻 Instalación y Ejecución Local
 
 1. Clonar el repositorio:
+    
     git clone https://github.com/JulianDerudi/ebooks.git
 
 2. Ingresar al directorio del proyecto:
+    
     cd ebooks
 
 3. Instalar dependencias:
+    
     npm install
 
 4. Ejecutar el servidor de desarrollo:
+    
     npm run dev
 
 5. Abrir en el navegador:
-http://localhost:5173
+
+    http://localhost:5173
 
 ## 📚 Aprendizajes Clave
 
