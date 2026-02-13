@@ -58,11 +58,12 @@ El proyecto está organizado siguiendo buenas prácticas de React:
 ebooks/
 ├── public/
 ├── src/
-│ ├── components/
-│ ├── context/
-│ ├── pages/
+│ ├── Components/
+│ ├── Context/
 │ ├── data/
 │ │ └── ebooksData.js
+| ├── Screens/
+| ├── styles/
 │ ├── App.jsx
 │ └── main.jsx
 ├── package.json
