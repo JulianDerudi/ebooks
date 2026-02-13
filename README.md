@@ -134,9 +134,10 @@ Mejoras de UI/UX
 ## 👤 Autor
 
 Julián Derudi
-📌 Portafolio: https://julianderudi.github.io/Portafolio/
 
-🔗 LinkedIn: https://www.linkedin.com/in/julian-derudi-730ba8343/
+    📌 Portafolio: https://julianderudi.github.io/Portafolio/
+
+    🔗 LinkedIn: https://www.linkedin.com/in/julian-derudi-730ba8343/
 
 ---
 
