@@ -10,6 +10,8 @@ export default function SearchEbookForm() {
   const handleSearch = (e) => {
     e.preventDefault();
     
+    if (!searchValue.trim()) return;
+    
     const ebooks = getEbooks();
     const ebookById = ebooks.find(ebook => ebook.id === parseInt(searchValue));
     
@@ -36,14 +38,16 @@ export default function SearchEbookForm() {
   return (
     <div className="search-form">
         <form onSubmit={handleSearch}>
-            <input 
-              type="text" 
-              placeholder="Search by title or ID..." 
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
+            <div className="form-group">
+              <input 
+                type="text" 
+                placeholder="Search by title or ID..." 
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+            </div>
             <Button type="submit">Search</Button>
         </form>
     </div>
-  )
+  );
 }

@@ -23,14 +23,19 @@ export default function ChapterReaderScreen() {
 
   return (
     <div className="chapter-reader">
-      <div className="chapter-reader-header">
-        <Link to={`/ebook/${id}`} style={{ textDecoration: 'none', color: 'var(--primary-color)' }}>
-          ← Back to Ebook
-        </Link>
-        <h1>{chapter.title}</h1>
-        <p style={{ color: 'var(--text-light)', fontSize: 'var(--font-size-sm)' }}>
-          Chapter {chapterId} of {ebook.chapters.length}
-        </p>
+      <div className="reader-header">
+        <div className="reader-header-info">
+          <p style={{ fontSize: 'var(--font-size-sm)', marginBottom: 'var(--spacing-sm)' }}>{ebook.title}</p>
+          <h2>{chapter.title}</h2>
+          <p style={{ fontSize: 'var(--font-size-sm)', marginTop: 'var(--spacing-sm)' }}>
+            Chapter {chapterId} of {ebook.chapters.length}
+          </p>
+        </div>
+        <div className="reader-header-actions">
+          <Link to={`/ebook/${id}`} style={{ textDecoration: 'none' }}>
+            <Button>← Back</Button>
+          </Link>
+        </div>
       </div>
 
       <div className="chapter-content">
@@ -39,7 +44,7 @@ export default function ChapterReaderScreen() {
 
       <div className="chapter-reader-nav">
         {prevChapter ? (
-          <Link to={`/ebook/${id}/chapter/${chapterIndex}`}>
+          <Link to={`/ebook/${id}/chapter/${chapterIndex}`} style={{ textDecoration: 'none' }}>
             <Button>← Previous Chapter</Button>
           </Link>
         ) : (

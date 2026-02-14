@@ -73,28 +73,33 @@ export default function EbookDetailScreen() {
             </div>
 
             <div className="chapters-container">
-                <div style={{ marginBottom: 'var(--spacing-2xl)' }}>
-                    <p style={{ color: 'var(--text-light)', marginBottom: 'var(--spacing-md)' }}>
-                        {ebook.description}
-                    </p>
+                <div className="ebook-detail-cover">
                     {ebook.cover_image && (
-                        <img 
-                            src={ebook.cover_image} 
-                            alt={ebook.title} 
-                            style={{ 
-                                maxWidth: '300px', 
-                                width: '100%',
-                                height: 'auto',
-                                borderRadius: 'var(--radius-md)',
-                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
-                            }} 
-                        />
+                        <div className="ebook-detail-cover-image">
+                            <img 
+                                src={ebook.cover_image} 
+                                alt={ebook.title}
+                            />
+                        </div>
                     )}
+                    <div className="ebook-detail-info">
+                        <h1>{ebook.title}</h1>
+                        <p className="ebook-detail-author">by {ebook.author}</p>
+                        {ebook.description && (
+                            <p className="ebook-detail-description">
+                                {ebook.description}
+                            </p>
+                        )}
+                        <div className="ebook-detail-meta">
+                            <div className="ebook-detail-meta-item">
+                                <span className="ebook-detail-meta-label">Chapters</span>
+                                <span className="ebook-detail-meta-value">{ebook.chapters?.length || 0}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <h3 style={{ marginBottom: 'var(--spacing-lg)', fontSize: 'var(--font-size-2xl)' }}>
-                    Chapters ({ebook.chapters?.length || 0})
-                </h3>
+                <h3 className="chapters-title">📚 Story Chapters</h3>
 
                 {ebook.chapters && ebook.chapters.length > 0 ? (
                     <div className="grid">
@@ -113,7 +118,7 @@ export default function EbookDetailScreen() {
                         ))}
                     </div>
                 ) : (
-                    <p>No chapters available</p>
+                    <p className="no-chapters">No chapters available yet</p>
                 )}
 
                 {isUserBook && (
