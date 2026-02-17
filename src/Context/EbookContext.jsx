@@ -1,34 +1,32 @@
 import { createContext, useEffect, useState } from "react";
-import { getEbooks, deleteEbookById, isUserAddedEbook } from "../services/ebookService";
+import { getEbooks, deleteEbookById, updateEbook } from "../services/ebookService";
 import { Outlet } from "react-router";
-
 
 export const EbookContext = createContext()
 
 export default function EbookContextProvider() {
     const [ebooks, setEbooks] = useState([])
-    const [loadingEbooks, setLoadingEbooks] = useState(false)
+    const [loadingEbooks, setLoadingEbooks] = useState(true)
+    const [error, setError] = useState(null)
 
-    function loadEbooks() {
+    async function loadEbooks() {
         setLoadingEbooks(true)
-        //aqui se haria la llamada a la API para obtener los ebooks
-        setTimeout(
-            function () {
-                // Solo guardar en localStorage si está vacío (primera vez)
-                if (!localStorage.getItem("ebooks")) {
-                    localStorage.setItem("ebooks", JSON.stringify([]));
-                }
-                const ebooks_list_response = getEbooks()
-                setEbooks(ebooks_list_response)
-                setLoadingEbooks(false)
-            },
-            2000 //simulamos un delay de 2 segundos para la llamada a la API
-        )
+        setError(null)
+        try {
+            const ebooks_list_response = await getEbooks()
+            setEbooks(ebooks_list_response)
+        } catch (err) {
+            setError(err.message)
+            console.error('Error loading ebooks:', err)
+        } finally {
+            setLoadingEbooks(false)
+        }
     }
 
     function getEbooksById(id) {
         if (loadingEbooks || !ebooks) return null
-        return ebooks.find(ebook => ebook.id === id)
+        // Compare with string since MongoDB returns string IDs
+        return ebooks.find(ebook => ebook._id === id || ebook.id === parseInt(id))
     }
 
     function searchEbooksByTitle(title) {
@@ -36,42 +34,32 @@ export default function EbookContextProvider() {
         return ebooks.filter(ebook => ebook.title.toLowerCase().includes(title.toLowerCase()))
     }
 
-    function updateEbookById(ebook_id_update, updatedEbook) {
-        if (loadingEbooks || !ebooks) return null
-        const ebookIndex = ebooks.findIndex(ebook => ebook.id === ebook_id_update)
-        if (ebookIndex === -1) return null
-        ebooks[ebookIndex] = updatedEbook
-        return updatedEbook
-    }
-
-    function deleteEbook(id) {
-        const deleted = deleteEbookById(id)
-        if (deleted) {
-            const updatedEbooks = ebooks.filter(ebook => ebook.id !== id)
+    async function deleteEbook(id) {
+        try {
+            await deleteEbookById(id)
+            const updatedEbooks = ebooks.filter(ebook => ebook._id !== id && ebook.id !== id)
             setEbooks(updatedEbooks)
+            return true
+        } catch (err) {
+            setError(err.message)
+            console.error('Error deleting ebook:', err)
+            return false
         }
-        return deleted
     }
 
-    function updateUserEbook(id, updatedEbook) {
-        // Solo permite actualizar ebooks del usuario
-        if (id <= 1000) return false
-        
-        const updatedEbooks = ebooks.map(ebook => 
-            ebook.id === id ? updatedEbook : ebook
-        )
-        setEbooks(updatedEbooks)
-        
-        // Guardar en localStorage también
-        const storedEbooks = localStorage.getItem("ebooks")
-        if (storedEbooks) {
-            const parsedStored = JSON.parse(storedEbooks)
-            const updated = parsedStored.map(ebook => 
-                ebook.id === id ? updatedEbook : ebook
+    async function updateUserEbook(id, updatedEbookData) {
+        try {
+            const updated = await updateEbook(id, updatedEbookData)
+            const updatedEbooks = ebooks.map(ebook => 
+                ebook._id === id || ebook.id === id ? updated : ebook
             )
-            localStorage.setItem("ebooks", JSON.stringify(updated))
+            setEbooks(updatedEbooks)
+            return true
+        } catch (err) {
+            setError(err.message)
+            console.error('Error updating ebook:', err)
+            return false
         }
-        return true
     }
 
     useEffect(() => {
@@ -83,9 +71,10 @@ export default function EbookContextProvider() {
         setEbooks,
         loadingEbooks,
         setLoadingEbooks,
+        error,
+        setError,
         getEbooksById,
         searchEbooksByTitle,
-        updateEbookById,
         loadEbooks,
         deleteEbook,
         updateUserEbook
