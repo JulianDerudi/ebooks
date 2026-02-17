@@ -6,20 +6,21 @@ import { Button } from "../shared/FormComponents";
 
 export default function Ebook({ ebook }) {
     const { deleteEbook } = useContext(EbookContext);
-    const isUserBook = isUserAddedEbook(ebook.id);
+    const isUserBook = isUserAddedEbook(ebook._id || ebook.id);
+    const ebookId = ebook._id || ebook.id;
 
     const handleDelete = (e) => {
         e.preventDefault();
         if (window.confirm(`Are you sure you want to delete "${ebook.title}"?`)) {
-            deleteEbook(ebook.id);
+            deleteEbook(ebookId);
         }
     };
 
     return (
         <div className="ebook-card">
             <div className="ebook-cover-wrapper">
-                {ebook.cover_image ? (
-                    <img src={ebook.cover_image} alt={ebook.title} />
+                {ebook.image || ebook.cover_image ? (
+                    <img src={ebook.image || ebook.cover_image} alt={ebook.title} />
                 ) : (
                     <div className="ebook-cover-placeholder">
                         {ebook.title.substring(0, 1)}
@@ -43,7 +44,7 @@ export default function Ebook({ ebook }) {
                 </div>
                 
                 <div className="ebook-actions">
-                    <Link to={`/ebook/${ebook.id}`} style={{ flex: 1, textDecoration: "none" }}>
+                    <Link to={`/ebook/${ebookId}`} style={{ flex: 1, textDecoration: "none" }}>
                         <Button className="full-width">Read</Button>
                     </Link>
                     {isUserBook && (

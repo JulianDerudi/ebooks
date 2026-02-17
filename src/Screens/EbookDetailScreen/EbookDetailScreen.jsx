@@ -46,9 +46,10 @@ export default function EbookDetailScreen() {
     if (!ebook) {
         return (
             <div className="chapters-container">
-                <p>Ebook not found</p>
+                <p>Ebook not found (ID: {id})</p>
+                <p style={{ fontSize: 'small', color: '#999' }}>The ebook you're looking for doesn't exist or was deleted.</p>
                 <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Button>← Back</Button>
+                    <Button>← Back Home</Button>
                 </Link>
             </div>
         );

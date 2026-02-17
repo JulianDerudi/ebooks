@@ -1,21 +1,53 @@
-import { useParams, useNavigate, Link } from "react-router";
+import { useParams, useNavigate, Link, useContext } from "react-router";
+import { useState, useEffect } from "react";
 import { getEbookById } from "../../services/ebookService";
+import { EbookContext } from "../../Context/EbookContext";
 import { Button } from "../../Components/shared/FormComponents";
 
 export default function ChapterReaderScreen() {
   const { id, chapterId } = useParams();
   const navigate = useNavigate();
-  const ebook = getEbookById(id);
-  
+  const { setError } = useContext(EbookContext);
+  const [ebook, setEbook] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEbook = async () => {
+      try {
+        setLoading(true);
+        const ebookData = await getEbookById(id);
+        if (ebookData) {
+          setEbook(ebookData);
+        } else {
+          setError("Ebook not found");
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchEbook();
+  }, [id, setError]);
+
+  if (loading) {
+    return (
+      <div className="chapters-container">
+        <p style={{ textAlign: 'center', padding: 'var(--spacing-xl)' }}>Loading ebook...</p>
+      </div>
+    );
+  }
+
   if (!ebook) {
-    return <div className="chapters-container"><p>Ebook not found</p></div>;
+    return <div className="chapters-container"><p>Ebook not found (ID: {id})</p></div>;
   }
 
   const chapterIndex = parseInt(chapterId) - 1;
   const chapter = ebook.chapters?.[chapterIndex];
   
   if (!chapter) {
-    return <div className="chapters-container"><p>Chapter not found</p></div>;
+    return <div className="chapters-container"><p>Chapter not found (Chapter: {chapterId})</p></div>;
   }
 
   const prevChapter = chapterIndex > 0 ? ebook.chapters[chapterIndex - 1] : null;
