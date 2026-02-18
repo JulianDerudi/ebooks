@@ -4,6 +4,7 @@ import { isUserAddedEbook } from "../../services/ebookService";
 import { EbookContext } from "../../Context/EbookContext";
 import { Button } from "../shared/FormComponents";
 
+
 export default function Ebook({ ebook }) {
     const { deleteEbook } = useContext(EbookContext);
     const isUserBook = isUserAddedEbook(ebook._id || ebook.id);
@@ -17,6 +18,7 @@ export default function Ebook({ ebook }) {
     };
 
     return (
+<<<<<<< HEAD
         <div className="ebook-card">
             <div className="ebook-cover-wrapper">
                 {ebook.image || ebook.cover_image ? (
@@ -59,5 +61,30 @@ export default function Ebook({ ebook }) {
                 </div>
             </div>
         </div>
+=======
+        <Link to={`/ebook/${ebook.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            <div className="chapter-item" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ flex: 1 }}>
+                    <h3 style={{ marginBottom: 'var(--spacing-sm)' }}>{ebook.title}</h3>
+                    <p style={{ color: 'var(--text-light)', fontSize: 'var(--font-size-sm)' }}>
+                        {ebook.author}
+                    </p>
+                    <p style={{ color: 'var(--text-light)', fontSize: 'var(--font-size-sm)', marginTop: 'var(--spacing-sm)' }}>
+                        {ebook.chapters?.length || 0} chapters
+                    </p>
+                </div>
+                {isUserBook && (
+                    <Button 
+                        onClick={handleDelete}
+                        size="small"
+                        variant="danger"
+                        style={{ marginLeft: 'var(--spacing-md)', whiteSpace: 'nowrap' }}
+                    >
+                        Delete
+                    </Button>
+                )}
+            </div>
+        </Link>
+>>>>>>> parent of 207b333 (Estilos)
     );
 }

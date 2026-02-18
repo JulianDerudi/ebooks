@@ -4,19 +4,13 @@ import { Button } from "../../Components/shared/FormComponents";
 
 export default function AddEbookScreen() {
     return (
-        <div>
-            <div style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)', padding: 'var(--spacing-2xl)', marginBottom: 'var(--spacing-2xl)', boxShadow: 'var(--shadow-md)' }}>
-                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                    <Link to="/" style={{ textDecoration: 'none', marginBottom: 'var(--spacing-lg)', display: 'inline-block' }}>
-                        <Button>← Back</Button>
-                    </Link>
-                    <h1 style={{ color: 'var(--white)', fontSize: 'var(--font-size-3xl)', fontWeight: 700, marginTop: 'var(--spacing-lg)' }}>✍️ Publish Your Story</h1>
-                    <p style={{ color: 'rgba(255, 255, 255, 0.9)', marginTop: 'var(--spacing-md)', fontSize: 'var(--font-size-base)' }}>Share your creativity with the world</p>
-                </div>
+        <div className="chapters-container">
+            <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button>← Back</Button>
+                </Link>
             </div>
-            <div className="chapters-container">
-                <NewEbookForm />
-            </div>
+            <NewEbookForm />
         </div>
     );
 }

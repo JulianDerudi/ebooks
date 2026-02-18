@@ -1,28 +1,24 @@
 /* Reader Styles - Optimized for comfortable reading */
 
 .reader-header {
-  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-  border-bottom: none;
-  padding: var(--spacing-xl) var(--spacing-lg);
+  background-color: var(--light-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--spacing-lg);
-  box-shadow: var(--shadow-md);
-  color: var(--white);
 }
 
 .reader-header-info h2 {
   font-size: var(--font-size-2xl);
   margin-bottom: var(--spacing-sm);
-  color: var(--white);
-  font-weight: 700;
 }
 
 .reader-header-info p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-light);
   font-size: var(--font-size-sm);
 }
 
@@ -95,20 +91,17 @@
 
 .chapter-item {
   background-color: var(--white);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
 }
 
 .chapter-item:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-color: var(--primary-color);
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.02) 0%, rgba(236, 72, 153, 0.02) 100%);
 }
 
 .chapter-item h3 {
@@ -218,11 +211,6 @@
   white-space: pre-wrap;
   word-break: break-word;
   text-align: justify;
-  background-color: var(--white);
-  padding: var(--spacing-2xl);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 768px) {

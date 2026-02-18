@@ -1,12 +1,59 @@
 const ebooks_data = [
     {
         id: 1,
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        description: "A novel about the American dream and the decadence of the Jazz Age.",
+        cover_image: null,
+        chapters: [
+            {
+                id: 1,
+                title: "Chapter 1: The Beginning",
+                content: "In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since. “Whenever you feel like criticizing any one,” he told me, “just remember that all the people in this world haven’t had the advantages that you’ve had.”"
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        description: "A novel about racial injustice in the Deep South.",
+        cover_image: null,
+        chapters: [
+            {
+                id: 1,
+                title: "Chapter 1: The Beginning",
+                content: "The story of a young girl named Scout Finch and her family in the fictional town of Maycomb, Alabama, during the 1930s."
+            },
+        ]
+    },
+    {
+        id: 3,
+        title: "1984",
+        author: "George Orwell",
+        description: "A dystopian social science fiction novel about totalitarian control.",
+        cover_image: null,
+        chapters: [
+            {
+                id: 1,
+                title: "Chapter 1: The Beginning",
+                content: "In a dystopian society, the government controls every aspect of life, including the individual's mind and body."
+            },
+            {
+                id: 2,
+                title: "Chapter 2: The End",
+                content: "The government uses its power to control the population and enforce its will on the people."
+            }
+        ]
+    },
+    {
+        id: 4,
         title: "Un Dragón, Un Ratón y Una Astilla",
         author: "Julian Derudi",
         description: `
             Cada capitulo de este libro te sumerge en las típicas preguntas existenciales que tiene el promedio de las personas que están en una etapa temprana de la adultez. Guiadas por animales antropomórficos, que a raíz de una situación, terminan profundizando en temas que te hacen reflexionar. Humor Sádico, Bizarro, Reflexivo, Fantasioso, son algunos de los conceptos que destacan este libro, además de tener un toque de jerga argentina.
             `,
-        cover_image: "https://picsum.photos/seed/ebook1/600/800",
+        cover_image: null,
         chapters: [
             {
                 id: 1,
@@ -137,224 +184,7 @@ Salieron... el calor, así como el perfeccionismo, habían sido aplastados por l
                 `
             }
         ]
-    },
-    {
-    "id": 2,
-    "title": "Pride and Prejudice",
-    "author": "Jane Austen",
-    "description": "A romantic novel that critiques the British landed gentry at the end of the 18th century through the story of Elizabeth Bennet.",
-    "cover_image": "https://picsum.photos/seed/ebook2/600/800",
-    "chapters": [
-      {
-        "id": 1,
-        "title": "Chapter 1: A Truth Universally Acknowledged",
-        "content": "The arrival of Mr. Bingley in the neighborhood sparks excitement and speculation among the Bennet family."
-      },
-      {
-        "id": 2,
-        "title": "Chapter 2: First Impressions",
-        "content": "Elizabeth Bennet forms an initial opinion of the reserved and seemingly arrogant Mr. Darcy."
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Moby-Dick",
-    "author": "Herman Melville",
-    "description": "An epic tale of obsession and revenge as Captain Ahab hunts the legendary white whale, Moby Dick.",
-    "cover_image": "https://picsum.photos/seed/ebook3/600/800",
-    "chapters": [
-      {
-        "id": 1,
-        "title": "Chapter 1: Call Me Ishmael",
-        "content": "Ishmael introduces himself and explains his desire to go to sea, setting the stage for the voyage aboard the Pequod."
-      },
-      {
-        "id": 2,
-        "title": "Chapter 2: The Spouter-Inn",
-        "content": "Ishmael meets Queequeg, and their unlikely friendship begins before they join Captain Ahab’s whaling expedition."
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "title": "The Great Gatsby",
-    "author": "F. Scott Fitzgerald",
-    "description": "A novel set in the Roaring Twenties that explores wealth, love, illusion, and the decline of the American Dream through the mysterious life of Jay Gatsby.",
-    "cover_image": "https://picsum.photos/seed/ebook4/600/800",
-    "chapters": [
-      {
-        "id": 1,
-        "title": "Chapter 1",
-        "content": "Nick Carraway moves to West Egg and reconnects with his cousin Daisy Buchanan and her husband Tom. He is introduced to Jordan Baker and glimpses his mysterious neighbor, Jay Gatsby."
-      },
-      {
-        "id": 2,
-        "title": "Chapter 2",
-        "content": "Tom takes Nick to the Valley of Ashes and introduces him to his mistress, Myrtle Wilson. The chapter ends with a drunken party in New York and Tom violently striking Myrtle."
-      },
-      {
-        "id": 3,
-        "title": "Chapter 3",
-        "content": "Nick attends one of Gatsby’s lavish parties and finally meets Gatsby, discovering he is more reserved and polite than the rumors suggest."
-      },
-      {
-        "id": 4,
-        "title": "Chapter 4",
-        "content": "Gatsby shares his supposed past with Nick and introduces him to Meyer Wolfsheim. Jordan later reveals that Gatsby is in love with Daisy and wants Nick to arrange a reunion."
-      },
-      {
-        "id": 5,
-        "title": "Chapter 5",
-        "content": "Nick arranges a meeting between Gatsby and Daisy. Their initially awkward reunion blossoms into renewed affection as Gatsby shows Daisy his mansion and wealth."
-      },
-      {
-        "id": 6,
-        "title": "Chapter 6",
-        "content": "Gatsby’s true background as James Gatz is revealed. Daisy attends one of Gatsby’s parties but feels uncomfortable, disappointing Gatsby’s dream of recreating the past."
-      },
-      {
-        "id": 7,
-        "title": "Chapter 7",
-        "content": "Tensions rise during a confrontation in New York between Gatsby and Tom over Daisy. On the drive home, Daisy accidentally kills Myrtle with Gatsby’s car, and Gatsby takes the blame."
-      },
-      {
-        "id": 8,
-        "title": "Chapter 8",
-        "content": "Gatsby waits for Daisy’s call, reflecting on his past. George Wilson, believing Gatsby killed Myrtle, shoots Gatsby before taking his own life."
-      },
-      {
-        "id": 9,
-        "title": "Chapter 9",
-        "content": "Nick organizes Gatsby’s sparsely attended funeral and becomes disillusioned with the East. He returns to the Midwest, reflecting on Gatsby’s dream and its tragic end."
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
-    "description": "A fantasy adventure following Bilbo Baggins as he embarks on a quest to reclaim a lost dwarven kingdom from the dragon Smaug.",
-    "cover_image": "https://picsum.photos/seed/ebook5/600/800",
-    "chapters": [
-      {
-        "id": 1,
-        "title": "Chapter 1: An Unexpected Party",
-        "content": "Bilbo Baggins is unexpectedly recruited by Gandalf and a group of dwarves for a dangerous adventure."
-      },
-      {
-        "id": 2,
-        "title": "Chapter 2: Roast Mutton",
-        "content": "The company encounters trolls on the road, testing Bilbo’s courage and wit for the first time."
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "title": "Dracula",
-    "author": "Bram Stoker",
-    "description": "Dracula (1897) is a Gothic horror novel by Bram Stoker. Told through diary entries, letters, and newspaper clippings, it narrates the story of Count Dracula's attempt to move from Transylvania to England in order to spread the undead curse, and the battle between Dracula and a small group of people led by Professor Abraham Van Helsing.",
-    "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Dracula_1958_c.jpg/330px-Dracula_1958_c.jpg",
-    "chapters": [
-        {
-            "id": 1,
-            "title": "Chapter 1 - Jonathan Harker’s Journal",
-            "content": `
-3 May. Bistritz.—Left Munich at 8:35 P.M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late. Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets. I feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.\n\nThe impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.\n\nWe left in pretty good time, and came after nightfall to Klausenburgh. Here I stopped for the night at the Hotel Royale. I had for dinner, or rather supper, a chicken done up some way with red pepper, which was very good but thirsty. (Mem., get recipe for Mina.) I asked the waiter, and he said it was called \"paprika hendl,\" and that, as it was a national dish, I should be able to get it anywhere along the Carpathians. I found my smattering of German very useful here; indeed, I don't know how I should be able to get on without it.\n\nBefore leaving Munich I had got together some information from the British Museum, and from conversations with Mr. Hawkins, relative to the country of Transylvania; and it seemed to me that some foreknowledge of the country could hardly fail to have some importance in dealing with a nobleman of that country.\n\nI find that the district he named is in the extreme east of the country, just on the borders of three states, Transylvania, Moldavia and Bukovina, in the midst of the Carpathian mountains; one of the wildest and least known portions of Europe. I was not able to light on any map or work giving the exact locality of the Castle Dracula, as there are no maps of this country as yet to compare with our own Ordnance Survey maps; but I found that Bistritz, the post town named by Count Dracula, is a fairly well-known place.\n\nI shall enter here some of my notes, as they may refresh my memory when I talk over my travels with Mina.\n\nIn the population of Transylvania there are four distinct nationalities: Saxons in the South, and mixed with them the Wallachs, who are the descendants of the Dacians; Magyars in the West, and Szekelys in the East and North. I am going among the latter, who claim to be descended from Attila and the Huns.\n\n4 May.—I found that my landlord had got a letter from the Count, directing him to secure the best place on the coach for me; but on making inquiries as to details he seemed somewhat reticent, and pretended that he could not understand my German. This could not be true, because up to then he had understood it perfectly; at least, he answered my questions exactly as if he did. He and his wife, the old lady who had received me, looked at each other in a frightened sort of way.\n\nWhen I asked him if he knew Count Dracula, and could tell me anything of his castle, both he and his wife crossed themselves and, saying that they knew nothing at all, simply refused to speak further.\n\nIt was so near the time of starting that I had no time to ask anyone else, for it was all very mysterious and not by any means comforting.\n\nJust before I was leaving, the landlady came up to my room and said in a very hysterical way: \"Must you go? Oh! young Herr, must you go?\" She was in such an excited state that she seemed to have lost her grip of what German she knew, and mixed it all up with some other language which I did not know at all. I was just able to follow her by asking her many questions. When I told her that I must go at once, and that I was engaged on important business, she asked again: \"Do you know what day it is?\" I answered that it was the fourth of May. She shook her head as she said again: \"Oh, yes! I know that! I know that! But do you know what day it is?\" On my saying that I did not understand, she went on: \"It is the eve of St. George's Day. Do you not know that tonight, when the clock strikes midnight, all the evil things in the world will have full sway? Do you know where you are going, and what you are going to?\"\n\nShe was in such evident distress that I tried to comfort her, but without effect. Finally she went down on her knees and implored me not to go; at least to wait a day or two before starting.\n\nIt was all very ridiculous but I did not feel comfortable. However, there was business to be done, and I could allow nothing to interfere with it.\n\nAs the carriage rolled on, the driver looked at his watch and at the sky, and seemed to be urging the horses to greater speed. The shadows of evening began to fall thick and fast around us. Suddenly, the driver pointed to a blue flame that flickered in the distance. The peasants crossed themselves, and one whispered the word \"Ordog\"—Satan.\n\nThe horses began to tremble and snort, but the driver spoke to them soothingly. Then, in the distance, I heard a long, agonized howl, such as might have been from a wolf. Another answered it, and another, until the air seemed full of the dread sound.\n\nThe carriage stopped suddenly. A tall man stepped from the darkness. He wore black from head to foot, and his face was pale, very pale. His eyes burned with a red light.\n\n\"You are Mr. Harker,\" he said in excellent English, though with a strange intonation.\n\n\"I am Dracula; and I bid you welcome, Mr. Harker, to my house. Enter freely and of your own will!\"\n\nHe made no motion of stepping to meet me, but stood like a statue, as though his gesture of welcome had fixed him into stone.\n\n
-            `
-        },
-        {
-            "id": 2,
-            "title": "Chapter 2 - Jonathan Harker’s Journal",
-            "content": "5 May.—I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of considerable size, and as several dark ways led from it under great round arches, it perhaps seemed bigger than it really is.\n\nI have not yet been able to see it by daylight.\n\nWhen I drove up, the Count himself came out to meet me. He held out his hand and took mine in a grip of steel; his strength seemed as that of a giant. His hand was cold as ice—more like the hand of a dead than a living man.\n\nHe said: \"Welcome to my house! Enter freely and of your own will!\" He made no motion of stepping to meet me, but stood like a statue.\n\nThe hall was vast and dimly lit. There were no mirrors anywhere in the castle. The windows were high and barred.\n\nThe Count was a tall old man, clean-shaven save for a long white moustache, and clad in black from head to foot. His face was strong—very strong—aquiline, with high bridge of the thin nose and peculiarly arched nostrils. His eyebrows were very massive, almost meeting over the nose. The mouth was fixed and rather cruel-looking, with peculiarly sharp white teeth; these protruded over the lips.\n\nThe general effect was one of extraordinary pallor.\n\nDuring dinner, though he urged me to eat heartily, he himself partook of nothing. When I remarked upon it, he said quietly: \"I never drink... wine.\"\n\nLater, as we sat by the fire, he questioned me closely about England—its laws, its people, its customs. He seemed particularly interested in London and in the purchase of an estate there.\n\nThat night I slept in a vast chamber. I could not shake off a vague feeling of unease.\n\n7 May.—The castle is a veritable prison, and I am a prisoner! There are no servants. The Count himself performs all duties. The doors are locked, and I have found that they are locked from the outside.\n\nIn exploring, I found a door left unlocked. It led to a ruined chapel and to a stair descending to vaults beneath. There were great wooden boxes filled with earth.\n\nWhen I returned, I saw the Count crawling head downward down the castle wall like a lizard.\n\nThe sight froze my blood."
-        },
-        {
-            "id": 3,
-            "title": "Chapter 3 - Jonathan Harker’s Journal",
-            "content": "When I found that I was a prisoner, a wild feeling of despair came over me. I began to pace the rooms, but could find no means of escape.\n\nOne evening, as I lay in a kind of ecstasy of fear, three young women entered my chamber. I had never seen them before. They were fair, with brilliant white teeth and burning eyes.\n\nThere was something about them that made me feel both desire and deadly fear.\n\nOne bent over me; I could feel the hot breath upon my neck. The skin of my throat began to tingle.\n\nSuddenly, the Count stood before them.\n\n\"How dare you touch him?\" he said fiercely. \"This man belongs to me!\"\n\nThe women drew back with a laugh. \"You yourself never loved; you never love!\" one taunted.\n\nThe Count turned, and with a gesture of his hand commanded them to depart. Before they vanished, he threw them a small bag which moved as if something living were within it.\n\nTheir laughter floated back, soft and cruel.\n\nFrom that moment I knew that my life was in dreadful peril."
-        },
-        {
-            "id": 4,
-            "title": "Chapter 4 - Jonathan Harker’s Journal",
-            "content": "I am writing only in shorthand, and the mere fact that I am writing at all shows that I am desperate. I have resolved to escape.\n\nThe Count has prepared for departure. I have seen him lie within one of the boxes filled with earth. He seems able to rest only in such soil.\n\nTonight I crept down into the vault. The air was heavy with dust and decay. In one of the boxes I found him lying as if dead. His eyes were open but glassy; the face looked bloated with blood.\n\nI raised a shovel meaning to strike, but a sudden movement of his eyelids and the horrible smile that curved his lips caused me to falter.\n\nI fled in terror.\n\nI now know that he intends to leave for England. The boxes of earth are to be transported there.\n\nI must attempt escape before it is too late.\n\nLater.—I have made the attempt. I descended the wall, as I had seen him do. The stones cut my hands. Far below lay the courtyard.\n\nIf I survive, this record may tell my story. If not—good-bye, Mina."
-        },
-        {
-            "id": 5,
-            "title": "Chapter 5 - Letters: Lucy Westenra and Mina Murray",
-            "content": "Letter, Lucy Westenra to Mina Murray.\n\nMy dearest Mina,—I must tell you that I am engaged! Three proposals in one day! Think of that! I refused two—poor fellows—but I said yes to Arthur Holmwood.\n\nOh, Mina, I am so happy, though I scarcely know why.\n\nMina's reply expresses joy for Lucy’s happiness and speaks of Jonathan, from whom she has not heard in many weeks.\n\nLucy writes again, describing strange dreams and a feeling of unease.\n\nMeanwhile, a letter arrives for Mina from Budapest: Jonathan has been found ill but alive."
-        },
-        {
-            "id": 6,
-            "title": "Chapter 6 - Mina Murray’s Journal",
-            "content": "Whitby.\n\nI have come here to be near the sea and to gather strength before my marriage.\n\nLucy has been restless in her sleep. Twice I have found her walking in the night, her eyes open yet unseeing.\n\nThere is a strange ship reported at sea, running wild in the storm.\n\nThe storm grows violent.\n\nThe ship runs aground upon the rocks.\n\nWhen the coast guard boards her, they find no living soul—only the dead captain lashed to the wheel.\n\nA great dog leaps from the vessel and disappears into the darkness."
-        },
-        {
-            "id": 7,
-            "title": "Chapter 7 - Newspaper Cuttings",
-            "content": "From The Dailygraph, 8 August.\n\nThe schooner Demeter arrived in Whitby harbor under extraordinary circumstances during last night's storm. She ran aground without pilot or crew.\n\nUpon investigation, it was discovered that all hands were missing. The captain was found dead, tied to the wheel. His log detailed increasing terror among the crew, who reported a mysterious presence aboard.\n\nOne by one the sailors vanished. The final entry speaks of a \"great dog\" and of something that walked the decks at night.\n\nThe vessel carried a cargo of boxes filled with earth, consigned to a Mr. S. F. Billington of London.\n\nThe great dog was seen leaping ashore and vanishing into the darkness."
-        },
-        {
-            "id": 8,
-            "title": "Chapter 8 - Mina Murray’s Journal",
-            "content": "Lucy grows weaker each day. She sleepwalks more frequently, always drawn toward the churchyard overlooking the sea.\n\nOne night I followed her and found her in the graveyard. She lay upon a bench near the old tomb. A dark figure bent over her.\n\nWhen I called out, the figure lifted its head. I could not see clearly, but there were red eyes and a pale face.\n\nLucy awoke confused and cold. There were two small wounds upon her throat.\n\nShe says she remembers nothing.\n\nMeanwhile, I have news from Jonathan. He is safe in Budapest, recovering from illness. I shall go to him at once."
-        },
-        {
-            "id": 9,
-            "title": "Chapter 9 - Dr. Seward’s Diary",
-            "content": "My patient, Renfield, grows more peculiar by the day. He eats flies, spiders, even small birds, claiming that life must be consumed to gain strength.\n\nLucy Westenra has fallen gravely ill. Arthur has asked me to examine her. Her condition is strange: extreme pallor, weakness, and blood loss without visible cause.\n\nProfessor Abraham Van Helsing has been summoned.\n\nUpon examining Lucy, Van Helsing appears deeply troubled.\n\n\"She has lost much blood,\" he says. \"More than she can afford.\"\n\nWe administer transfusions—first Arthur, then myself, then Quincey Morris. Each time she revives, only to decline again.\n\nVan Helsing insists that garlic flowers be placed in her room.\n\nLucy dislikes them and removes them when unattended."
-        },
-        {
-            "id": 10,
-            "title": "Chapter 10 - Dr. Seward’s Diary",
-            "content": "Lucy’s condition worsens dramatically. Despite repeated blood transfusions, she continues to lose blood mysteriously each night.\n\nVan Helsing becomes increasingly certain that supernatural forces are involved. He places garlic around Lucy’s neck and windows, warning that they must not be removed.\n\nLucy’s mother, unaware of the importance, removes the garlic flowers from the room, disturbed by their smell.\n\nThat night, Lucy suffers a terrible attack. Wolves howl outside the house. A large wolf crashes through the window, terrifying Mrs. Westenra, who dies instantly from shock.\n\nLucy is left alone and defenseless."
-        },
-        {
-            "id": 11,
-            "title": "Chapter 11 - Lucy Westenra’s Death",
-            "content": "Lucy dies shortly after the attack.\n\nArthur is devastated. Van Helsing behaves strangely calm, though his eyes show deep sorrow.\n\nSoon after Lucy’s burial, reports begin appearing in newspapers about children found wandering at night, with small wounds on their throats.\n\nThey speak of a \"bloofer lady\"—a beautiful woman who lures them into the night.\n\nVan Helsing grows grim. He knows the truth.\n\nLucy has risen again."
-        },
-        {
-            "id": 12,
-            "title": "Chapter 12 - The Un-Dead",
-            "content": "Van Helsing brings Arthur, Seward, and Quincey Morris to Lucy’s tomb.\n\nThey find the coffin empty.\n\nLater, Lucy returns, carrying a child in her arms. Her beauty is now terrible and seductive, her lips red with blood.\n\nShe attempts to entice Arthur to her.\n\nVan Helsing intervenes.\n\nThe men resolve to free Lucy’s soul.\n\nThe following night, Arthur drives a stake through Lucy’s heart. Seward and Morris assist. Van Helsing places garlic in her mouth and decapitates her.\n\nAfterward, Lucy’s face regains its innocence and peace.\n\nThey have destroyed a vampire.\n\nNow they must find the master."
-        },
-        {
-            "id": 13,
-            "title": "Chapter 13 - The Council of War",
-            "content": "Mina rejoins Jonathan in England. He has recovered, though the memory of the castle still haunts him.\n\nWhen shown a photograph of Count Dracula, Jonathan immediately recognizes him as the nobleman from Transylvania.\n\nVan Helsing gathers Jonathan, Mina, Dr. Seward, Arthur Holmwood, and Quincey Morris.\n\nHe reveals the truth: Dracula is a vampire—one of the Un-Dead—who must sleep in earth from his homeland and who feeds on the blood of the living.\n\nThey resolve to locate the fifty boxes of Transylvanian earth shipped to England.\n\nEach must be sanctified and rendered unusable to the Count."
-        },
-        {
-            "id": 14,
-            "title": "Chapter 14 - Mina’s Journal",
-            "content": "Mina assists by organizing all journals, letters, and records into a coherent narrative.\n\nHer intelligence and calmness impress Van Helsing deeply.\n\nThey discover that many of the boxes have been distributed to different properties across London.\n\nOne by one, the men break into these locations and place sacred wafers in the soil, preventing Dracula from resting there.\n\nMeanwhile, Renfield’s behavior becomes more erratic. He speaks of a \"Master\" who is coming."
-        },
-        {
-            "id": 15,
-            "title": "Chapter 15 - The Attack on Mina",
-            "content": "Too late, they realize that Dracula has turned his attention to Mina.\n\nOne night, they burst into her room to find Dracula forcing her to drink blood from his chest.\n\nJonathan lies unconscious beside her.\n\nDracula vanishes in mist before they can seize him.\n\nMina bears a scar on her forehead where Van Helsing pressed a sacred wafer—it burned her flesh, proving that Dracula’s curse has begun.\n\nVan Helsing explains that Mina is now linked to the Count.\n\nThrough hypnosis, she may sense his movements.\n\nThe hunt becomes urgent."
-        },
-        {
-            "id": 16,
-            "title": "Chapter 16 - The Escape",
-            "content": "Dracula, finding most of his resting places destroyed, prepares to flee England.\n\nUsing Mina’s hypnotic connection at sunrise and sunset, Van Helsing is able to determine that the Count is aboard a ship bound for the Continent.\n\nThe Demeter’s fate is now understood: Dracula traveled concealed within boxes of earth.\n\nThe group divides forces. Jonathan and Arthur travel by sea to intercept the vessel. Dr. Seward and Quincey Morris pursue by land. Van Helsing and Mina travel toward Transylvania, aiming to reach the castle before Dracula.\n\nMina grows paler each day, but her courage remains strong."
-        },
-        {
-            "id": 17,
-            "title": "Chapter 17 - Across Europe",
-            "content": "The pursuit becomes a race against time.\n\nDracula’s ship docks at Varna, but the Count eludes them. He has arranged transport inland toward the Borgo Pass.\n\nVan Helsing and Mina travel by carriage through the snow-covered mountains.\n\nEach sunset, Mina enters a trance and whispers fragments of sensation: the sound of water, the creaking of wood, the smell of earth.\n\nThe others close in from different directions.\n\nWinter storms slow their progress.\n\nWolves gather in the distance."
-        },
-        {
-            "id": 18,
-            "title": "Chapter 18 - The Castle",
-            "content": "Van Helsing and Mina reach Castle Dracula before the Count’s return.\n\nInside, the castle is silent and desolate.\n\nIn the crypt, Van Helsing discovers the three vampire women who once threatened Jonathan.\n\nWith solemn resolve, he destroys them, freeing their spirits.\n\nOutside, Mina hears wolves howling, drawn by Dracula’s presence.\n\nAt sunset, Jonathan Harker and Quincey Morris intercept the wagon transporting Dracula’s box of earth.\n\nIn a desperate struggle, they pry open the coffin.\n\nAs the sun sinks below the horizon, Jonathan slashes Dracula’s throat with a kukri knife, while Quincey plunges a bowie knife into his heart.\n\nThe Count crumbles into dust.\n\nAt that same instant, Mina’s scar fades.\n\nThe curse is lifted.\n\nQuincey Morris, mortally wounded in the struggle, dies peacefully, knowing they have succeeded."
-        },
-        {
-            "id": 19,
-            "title": "Chapter 19 - Epilogue",
-            "content": "Seven years later.\n\nJonathan and Mina are married and have a son, named Quincey in honor of their fallen friend.\n\nThey return once more to Transylvania, reflecting on the terrible events they endured.\n\nAll that remains of Dracula is memory.\n\nBut the journals and letters remain as testament.\n\nThus ends the record of the struggle against Count Dracula."
-        }
-    ]
-  }
+    }
 ]
 
 export default ebooks_data

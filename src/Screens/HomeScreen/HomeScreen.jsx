@@ -7,23 +7,22 @@ export default function HomeScreen() {
   return (
     <div className="home-container">
         <header> 
-            <h1>My Virtual Library</h1>
-            <p style={{ color: 'rgba(255, 255, 255, 0.9)', marginTop: 'var(--spacing-md)' }}>Discover and explore amazing stories</p>
+            <h1>Welcome to Ebooks</h1>
+            <SearchEbookForm />
         </header>
         
-        <SearchEbookForm />
-        
         <div style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--spacing-lg)' }}>
-            <h2 style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 700, color: 'var(--text-color)' }}>
-              📚 Your Collection
-            </h2>
-            <Link to="/add-ebook" style={{ textDecoration: 'none' }}>
-              <Button style={{ fontSize: 'var(--font-size-sm)', padding: 'var(--spacing-md) var(--spacing-lg)' }}>+ Add New</Button>
-            </Link>
-          </div>
+          <h2 style={{ fontSize: 'var(--font-size-2xl)', marginBottom: 'var(--spacing-lg)' }}>
+            Discover Your Favorite Ebooks
+          </h2>
           <EbookList />
         </div>
+
+        <div style={{ marginTop: 'var(--spacing-2xl)', textAlign: 'center' }}>
+          <Link to="/add-ebook" style={{ textDecoration: 'none' }}>
+            <Button>+ Add New Ebook</Button>
+          </Link>
+        </div>
     </div>
-  );
+  )
 }
