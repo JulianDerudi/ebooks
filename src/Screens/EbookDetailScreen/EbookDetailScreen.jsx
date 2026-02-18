@@ -1,76 +1,36 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import { getEbookById } from "../../services/ebookService";
+import { isUserAddedEbook } from "../../services/ebookService";
 import { EbookContext } from "../../Context/EbookContext";
 import { Button, FormInput, FormTextarea } from "../../Components/shared/FormComponents";
 
 export default function EbookDetailScreen() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { deleteEbook, updateUserEbook, setError } = useContext(EbookContext);
-    const [ebook, setEbook] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { deleteEbook, updateUserEbook } = useContext(EbookContext);
+    const [ebook, setEbook] = useState(getEbookById(id));
     const [showAddChapter, setShowAddChapter] = useState(false);
     const [chapterTitle, setChapterTitle] = useState("");
     const [chapterContent, setChapterContent] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    useEffect(() => {
-        const fetchEbook = async () => {
-            try {
-                setLoading(true);
-                const ebookData = await getEbookById(id);
-                if (ebookData) {
-                    setEbook(ebookData);
-                } else {
-                    setError("Ebook not found");
-                }
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        
-        fetchEbook();
-    }, [id, setError]);
-
-    if (loading) {
-        return (
-            <div className="chapters-container">
-                <p style={{ textAlign: 'center', padding: 'var(--spacing-xl)' }}>Loading ebook...</p>
-            </div>
-        );
-    }
+    const isUserBook = isUserAddedEbook(parseInt(id));
 
     if (!ebook) {
         return (
             <div className="chapters-container">
-                <p>Ebook not found (ID: {id})</p>
-                <p style={{ fontSize: 'small', color: '#999' }}>The ebook you're looking for doesn't exist or was deleted.</p>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Button>← Back Home</Button>
-                </Link>
+                <p>Ebook not found</p>
             </div>
         );
     }
 
-    const handleDelete = async () => {
+    const handleDelete = () => {
         if (window.confirm(`Are you sure you want to delete "${ebook.title}"?`)) {
-            try {
-                const success = await deleteEbook(ebook._id || id);
-                if (success) {
-                    navigate("/");
-                } else {
-                    alert("Failed to delete ebook");
-                }
-            } catch (err) {
-                alert(`Error deleting ebook: ${err.message}`);
-            }
+            deleteEbook(parseInt(id));
+            navigate("/");
         }
     };
 
-    const handleAddChapter = async (e) => {
+    const handleAddChapter = (e) => {
         e.preventDefault();
         
         if (!chapterTitle.trim() || !chapterContent.trim()) {
@@ -78,40 +38,24 @@ export default function EbookDetailScreen() {
             return;
         }
 
-        setIsSubmitting(true);
+        const newChapter = {
+            id: ebook.chapters.length > 0 ? Math.max(...ebook.chapters.map(c => c.id)) + 1 : 1,
+            title: chapterTitle,
+            content: chapterContent
+        };
 
-        try {
-            const nextChapterId = ebook.chapters && ebook.chapters.length > 0 
-                ? Math.max(...ebook.chapters.map(c => c.id)) + 1 
-                : 1;
+        const updatedEbook = {
+            ...ebook,
+            chapters: [...ebook.chapters, newChapter]
+        };
 
-            const newChapter = {
-                id: nextChapterId,
-                title: chapterTitle.trim(),
-                content: chapterContent.trim()
-            };
-
-            const updatedEbook = {
-                ...ebook,
-                chapters: [...(ebook.chapters || []), newChapter]
-            };
-
-            const success = await updateUserEbook(ebook._id || id, updatedEbook);
-            
-            if (success) {
-                setEbook(updatedEbook);
-                setChapterTitle("");
-                setChapterContent("");
-                setShowAddChapter(false);
-                alert("Chapter added successfully!");
-            } else {
-                alert("Failed to add chapter");
-            }
-        } catch (err) {
-            alert(`Error adding chapter: ${err.message}`);
-        } finally {
-            setIsSubmitting(false);
-        }
+        updateUserEbook(parseInt(id), updatedEbook);
+        setEbook(updatedEbook);
+        
+        setChapterTitle("");
+        setChapterContent("");
+        setShowAddChapter(false);
+        alert("Chapter added successfully!");
     };
 
     return (
@@ -129,39 +73,33 @@ export default function EbookDetailScreen() {
             </div>
 
             <div className="chapters-container">
-<<<<<<< HEAD
                 <div className="ebook-detail-cover">
-                    {ebook.image && (
+                    {ebook.cover_image && (
                         <div className="ebook-detail-cover-image">
                             <img 
-                                src={ebook.image} 
+                                src={ebook.cover_image} 
                                 alt={ebook.title}
                             />
                         </div>
-=======
-                <div style={{ marginBottom: 'var(--spacing-2xl)' }}>
-                    <p style={{ color: 'var(--text-light)', marginBottom: 'var(--spacing-md)' }}>
-                        {ebook.description}
-                    </p>
-                    {ebook.cover_image && (
-                        <img 
-                            src={ebook.cover_image} 
-                            alt={ebook.title} 
-                            style={{ 
-                                maxWidth: '300px', 
-                                width: '100%',
-                                height: 'auto',
-                                borderRadius: 'var(--radius-md)',
-                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
-                            }} 
-                        />
->>>>>>> parent of 207b333 (Estilos)
                     )}
+                    <div className="ebook-detail-info">
+                        <h1>{ebook.title}</h1>
+                        <p className="ebook-detail-author">by {ebook.author}</p>
+                        {ebook.description && (
+                            <p className="ebook-detail-description">
+                                {ebook.description}
+                            </p>
+                        )}
+                        <div className="ebook-detail-meta">
+                            <div className="ebook-detail-meta-item">
+                                <span className="ebook-detail-meta-label">Chapters</span>
+                                <span className="ebook-detail-meta-value">{ebook.chapters?.length || 0}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <h3 style={{ marginBottom: 'var(--spacing-lg)', fontSize: 'var(--font-size-2xl)' }}>
-                    Chapters ({ebook.chapters?.length || 0})
-                </h3>
+                <h3 className="chapters-title">📚 Story Chapters</h3>
 
                 {ebook.chapters && ebook.chapters.length > 0 ? (
                     <div className="grid">
@@ -180,63 +118,57 @@ export default function EbookDetailScreen() {
                         ))}
                     </div>
                 ) : (
-                    <p>No chapters available</p>
+                    <p className="no-chapters">No chapters available yet</p>
                 )}
 
-                <div style={{ marginTop: 'var(--spacing-2xl)' }}>
+                {isUserBook && (
+                    <div style={{ marginTop: 'var(--spacing-2xl)' }}>
+                        <Button 
+                            onClick={() => setShowAddChapter(!showAddChapter)}
+                            className={showAddChapter ? '' : ''}
+                        >
+                            {showAddChapter ? "Cancel" : "Add Chapter"}
+                        </Button>
+
+                        {showAddChapter && (
+                            <form onSubmit={handleAddChapter} className="add-chapter-form">
+                                <h4>Add New Chapter</h4>
+                                <FormInput 
+                                    label="Chapter Title"
+                                    value={chapterTitle}
+                                    onChange={(e) => setChapterTitle(e.target.value)}
+                                    required
+                                />
+                                <FormTextarea 
+                                    label="Chapter Content"
+                                    value={chapterContent}
+                                    onChange={(e) => setChapterContent(e.target.value)}
+                                    required
+                                />
+                                <div className="form-actions">
+                                    <Button type="submit">Save Chapter</Button>
+                                    <Button 
+                                        type="button"
+                                        variant="secondary"
+                                        onClick={() => setShowAddChapter(false)}
+                                    >
+                                        Cancel
+                                    </Button>
+                                </div>
+                            </form>
+                        )}
+                    </div>
+                )}
+
+                {isUserBook && (
                     <Button 
-                        onClick={() => setShowAddChapter(!showAddChapter)}
-                        className={showAddChapter ? '' : ''}
-                        disabled={isSubmitting}
+                        onClick={handleDelete} 
+                        variant="danger"
+                        style={{ marginTop: 'var(--spacing-2xl)', width: '100%', maxWidth: '300px' }}
                     >
-                        {showAddChapter ? "Cancel" : "Add Chapter"}
+                        Delete / Unpublish
                     </Button>
-
-                    {showAddChapter && (
-                        <form onSubmit={handleAddChapter} className="add-chapter-form">
-                            <h4>Add New Chapter</h4>
-                            <FormInput 
-                                label="Chapter Title"
-                                value={chapterTitle}
-                                onChange={(e) => setChapterTitle(e.target.value)}
-                                required
-                                disabled={isSubmitting}
-                            />
-                            <FormTextarea 
-                                label="Chapter Content"
-                                value={chapterContent}
-                                onChange={(e) => setChapterContent(e.target.value)}
-                                required
-                                disabled={isSubmitting}
-                            />
-                            <div className="form-actions">
-                                <Button 
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                >
-                                    {isSubmitting ? "Saving..." : "Save Chapter"}
-                                </Button>
-                                <Button 
-                                    type="button"
-                                    variant="secondary"
-                                    onClick={() => setShowAddChapter(false)}
-                                    disabled={isSubmitting}
-                                >
-                                    Cancel
-                                </Button>
-                            </div>
-                        </form>
-                    )}
-                </div>
-
-                <Button 
-                    onClick={handleDelete} 
-                    variant="danger"
-                    style={{ marginTop: 'var(--spacing-2xl)', width: '100%', maxWidth: '300px' }}
-                    disabled={isSubmitting}
-                >
-                    Delete / Unpublish
-                </Button>
+                )}
             </div>
         </div>
     );

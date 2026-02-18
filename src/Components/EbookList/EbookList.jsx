@@ -17,7 +17,7 @@ export default function EbookList() {
     return (
         <div className="ebook-list">
             {ebooks.map(ebook => (
-                <Ebook key={ebook._id || ebook.id} ebook={ebook} />
+                <Ebook key={ebook.id} ebook={ebook} />
             ))}
         </div>
     )
